@@ -4,7 +4,8 @@ import FileUpload from './components/FileUpload';
 import DocumentPreview from './components/DocumentPreview';
 import ComparisonSummary from './components/ComparisonSummary';
 import { DocumentData, ComparisonResult } from './types';
-import { compareDocuments, highlightDifferences, compareHtmlDocuments } from './utils/textComparison';
+import { compareDocuments, compareHtmlDocuments } from './utils/textComparison';
+import { exportComparisonResults } from './utils/exportUtils';
 
 function App() {
   const [leftDocument, setLeftDocument] = useState<DocumentData | null>(null);
@@ -33,28 +34,7 @@ function App() {
 
   const handleExportResults = useCallback(() => {
     if (!comparison || !leftDocument || !rightDocument) return;
-
-    const leftHtml = highlightDifferences(comparison.leftDiffs);
-    const rightHtml = highlightDifferences(comparison.rightDiffs);
-
-    const exportData = {
-      leftDocument: leftDocument.name,
-      rightDocument: rightDocument.name,
-      summary: comparison.summary,
-      leftContent: leftHtml,
-      rightContent: rightHtml,
-      exportDate: new Date().toISOString()
-    };
-
-    const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `document-comparison-${Date.now()}.json`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
+    exportComparisonResults(comparison, leftDocument, rightDocument);
   }, [comparison, leftDocument, rightDocument]);
 
   const clearDocuments = useCallback(() => {

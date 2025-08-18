@@ -1,13 +1,13 @@
 import { ComparisonResult, DocumentData } from '../types';
-import { highlightDifferences } from './textComparison';
+import { renderHtmlDifferences } from './textComparison';
 
 export const exportComparisonResults = (
   comparison: ComparisonResult,
   leftDocument: DocumentData,
   rightDocument: DocumentData
 ) => {
-  const leftHtml = highlightDifferences(comparison.leftDiffs);
-  const rightHtml = highlightDifferences(comparison.rightDiffs);
+  const leftHtml = renderHtmlDifferences(comparison.leftDiffs);
+  const rightHtml = renderHtmlDifferences(comparison.rightDiffs);
 
   const exportData = {
     metadata: {
@@ -46,8 +46,8 @@ export const exportAsHtml = (
   leftDocument: DocumentData,
   rightDocument: DocumentData
 ) => {
-  const leftHtml = highlightDifferences(comparison.leftDiffs);
-  const rightHtml = highlightDifferences(comparison.rightDiffs);
+  const leftHtml = renderHtmlDifferences(comparison.leftDiffs);
+  const rightHtml = renderHtmlDifferences(comparison.rightDiffs);
 
   const htmlContent = `
 <!DOCTYPE html>
