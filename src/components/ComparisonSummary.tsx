@@ -1,5 +1,5 @@
 import React from 'react';
-import { Plus, Minus, BarChart3, Download, GitCompare } from 'lucide-react';
+import { Plus, Minus, BarChart3, Download } from 'lucide-react';
 import { ComparisonResult } from '../types';
 
 interface ComparisonSummaryProps {
@@ -14,8 +14,8 @@ const ComparisonSummary: React.FC<ComparisonSummaryProps> = ({ comparison, onExp
     <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-lg font-semibold text-gray-800 flex items-center gap-2">
-          <GitCompare className="h-5 w-5" />
-          Git-style Comparison Summary
+          <BarChart3 className="h-5 w-5" />
+          Comparison Summary
         </h3>
         <button
           onClick={onExport}

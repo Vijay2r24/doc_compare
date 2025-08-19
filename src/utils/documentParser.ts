@@ -63,14 +63,9 @@ export const parseWordDocument = async (file: File): Promise<{ content: string; 
     
     // Also preserve paragraph structure for better comparison
     const paragraphs = Array.from(tempDiv.querySelectorAll('p, h1, h2, h3, h4, h5, h6, li, td, th'));
-    const structuredText = paragraphs.map(p => {
-      const text = p.textContent || '';
-      // Preserve leading/trailing whitespace for accurate comparison
-      return text;
-    }).filter(text => text.length > 0).join('\n\n');
+    const structuredText = paragraphs.map(p => p.textContent?.trim()).filter(Boolean).join('\n\n');
     
-    // Preserve exact whitespace and line breaks
-    const plainText = structuredText || textNodes.join('\n') || tempDiv.textContent || tempDiv.innerText || '';
+    const plainText = structuredText || textNodes.join(' ') || tempDiv.textContent || tempDiv.innerText || '';
     
     // Enhanced HTML with better styling
     const enhancedHtml = enhanceWordHtml(result.value);

@@ -24,9 +24,9 @@ const DocumentPreview: React.FC<DocumentPreviewProps> = ({ document, diffs, titl
 			</div>
 			
 			<div className="flex-1 overflow-auto">
-				<div className="p-8 bg-white min-h-full font-mono text-sm leading-relaxed">
+				<div className="p-8 bg-white min-h-full">
 					<div 
-						className="word-document-preview git-diff-view"
+						className="word-document-preview"
 						dangerouslySetInnerHTML={{ __html: content }}
 					/>
 				</div>

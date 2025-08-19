@@ -134,18 +134,14 @@ function App() {
             {/* Legend */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
               <h4 className="text-sm font-semibold text-gray-700 mb-3">Legend</h4>
-              <div className="flex flex-wrap gap-6 text-sm">
+              <div className="flex flex-wrap gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                  <span className="bg-green-100 text-green-800 px-2 py-1 rounded border-l-4 border-green-500">+ Added</span>
-                  <span className="text-gray-600">New content in modified document</span>
+                  <span className="bg-green-200 text-green-800 px-2 py-1 rounded">Added text</span>
+                  <span className="text-gray-600">Content added in the modified document</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="bg-red-100 text-red-800 px-2 py-1 rounded line-through border-l-4 border-red-500">- Deleted</span>
-                  <span className="text-gray-600">Content removed from original</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded border-l-4 border-gray-300">Unchanged</span>
-                  <span className="text-gray-600">Identical content</span>
+                  <span className="bg-red-200 text-red-800 px-2 py-1 rounded line-through">Deleted text</span>
+                  <span className="text-gray-600">Content removed from the original document</span>
                 </div>
               </div>
             </div>
